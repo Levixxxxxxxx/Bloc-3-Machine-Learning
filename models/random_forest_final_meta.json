@@ -1,0 +1,9 @@
+{
+  "best_params": {
+    "clf__class_weight": "balanced",
+    "clf__max_depth": null,
+    "clf__min_samples_leaf": 10,
+    "clf__n_estimators": 200
+  },
+  "cv_auc_mean": 0.8475495453195728
+}
