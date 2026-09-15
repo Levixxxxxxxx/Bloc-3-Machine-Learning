@@ -41,6 +41,43 @@ Développement d'un modèle de Machine Learning permettant de prédire le risque
 
 └── README.md
 
+## Pipeline de traitement
+
+```mermaid
+flowchart TD
+    A["Dataset brut<br/>Telco Customer Churn (Kaggle)"] --> B(("01_data_analysis_cleaning.ipynb"))
+
+    subgraph NB1["📓 Notebook 1 — Nettoyage & EDA"]
+        B --> C["Analyse qualité<br/>TotalCharges, doublons, valeurs manquantes"]
+        C --> D["Nettoyage<br/>conversion + drop customerID + encodage Churn"]
+        D --> E["Split train/test stratifié (80/20)"]
+        E --> F["EDA sur le train uniquement<br/>sélection de caractéristiques"]
+    end
+
+    E --> G[("data/processed/train.csv")]
+    E --> H[("data/processed/test.csv")]
+
+    G --> I(("02_modeling.ipynb"))
+
+    subgraph NB2["📓 Notebook 2 — Modélisation"]
+        I --> J["Pipeline preprocessing<br/>StandardScaler + OneHotEncoder"]
+        J --> K["Comparaison de modèles<br/>Rég. logistique / Arbre / Random Forest"]
+        K --> L["Optimisation hyperparamètres<br/>GridSearchCV"]
+    end
+
+    L --> M[("models/random_forest_final.pkl")]
+
+    H --> N(("03_validation.ipynb"))
+    M --> N
+
+    subgraph NB3["📓 Notebook 3 — Validation finale"]
+        N --> O["Évaluation sur le jeu de test<br/>(ouvert une seule fois)"]
+        O --> P["Analyse de généralisation<br/>AUC test vs AUC validation croisée"]
+    end
+
+    M --> Q["app.py<br/>Dashboard Streamlit"]
+```
+
 ## Installation
 
 ```bash
