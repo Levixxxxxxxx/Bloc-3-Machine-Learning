@@ -12,19 +12,33 @@ Développement d'un modèle de Machine Learning permettant de prédire le risque
 
 ## Structure du projet
 ├── data/
+
 │ ├── raw/ # Dataset brut (non versionné)
+
 │ └── processed/ # train.csv / test.csv après nettoyage et split
+
 ├── notebooks/
+
 │ ├── 01_data_analysis_cleaning.ipynb # Analyse qualité, EDA, nettoyage, split train/test
+
 │ ├── 02_modeling.ipynb # Pipeline, modèles, comparaison, optimisation
+
 │ └── 03_validation.ipynb # Validation finale sur le jeu de test
+
 ├── models/
+
 │ ├── random_forest_final.pkl # Modèle final entraîné (pipeline complet)
+
 │ └── random_forest_final_meta.json # Hyperparamètres et score de validation croisée
+
 ├── reports/
+
 │ └── figures/ # Graphiques exportés
+
 ├── app.py # Dashboard interactif (Streamlit)
+
 ├── requirements.txt
+
 └── README.md
 
 ## Installation
